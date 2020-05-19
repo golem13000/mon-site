@@ -1,0 +1,224 @@
+body {
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    background-image: url('../img/fond.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bg-light {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    margin-top: 100px;
+}
+
+h1.recipe-head {
+    position: absolute;
+    margin: 25vh 0 0 -8px;
+    background-color: #A5926A;
+    padding: 10px calc(1em + 12px);
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+}
+
+/************* Menu dynamique **************/
+
+/* Menu de navigation principal, positionné en absolu, en haut de la page, avec une profondeur de +2000 pour être sûr qu'il sera toujours visible en premier plan */
+.menu {
+    width: 100%;
+    height: 60px;
+   /* position: fixed;*/
+    top : 0;
+    left: 0;
+    z-index: 2000;
+    background-color: #A5926A;
+}
+
+/* Liste du menu principal, sur laquelle on applique la propriété flex, afin de pouvoir positionner ses éléments enfants avec les fonctionnalités flexbox */
+.menu ul {
+    width: 80%;
+    display: flex;
+    margin-top: 0;
+    margin-left: 6%;
+}
+
+/* Eléments (items) du menu principal, premier niveau */
+.menu ul li {
+    padding: 21px;
+    list-style-type: none;
+    height: 20px;
+}
+
+/* Application d'un style au survol */
+.menu ul li:hover {
+    background-color: rgba(255,255,255, 0.1);
+}
+
+/* Propriétés de la liste portant la classe sous-menu, classe enfant d'un élément de liste du menu principal 
+On indique ici via la propriété flex-direction que les éléments devront s'aligner verticalement (column), l'alignement par défaut étant horizontal (row) */
+.menu .sous-menu {
+    background-color: #A5926A;
+    flex-direction: column;
+    width: 100%;
+    margin-left: -20px;
+    margin-top: 21px;
+    display: none;
+}
+
+.menu .sous-menu li {
+    margin-left: -40px;
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Style survolé pour les élément de liste du sous-menu */
+.menu .sous-menu li:hover {
+    background-color: #A5926A;
+}
+
+/* Lorsque l'élément de liste principal est survolé, on modifie sur l'élément liste enfant la propriété display, pour faire apparaître le sous-menu */
+.menu ul li:hover ul.sous-menu {
+    display: block;
+}
+
+/* Style des liens du menu ET du sous-menu*/
+.menu ul li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/*************Modale**************/
+
+/* On défini les propriétés de l'élément à afficher, tout en masquant sa visibilité */
+#targeted {
+    position: fixed;
+    top: 25vh;
+    left: 25%;
+    width: 50%;
+    height: 50vh;
+    z-index: 2000;
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid grey;
+    display: none;
+}
+
+/* Lorsque l'élément est ciblé, on modifie sa visibilité */
+#targeted:target {
+    display : block;
+}
+
+/*************Animation**************/
+
+@keyframes monanim {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50%{ transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100%{ transform: rotate(0deg); }
+}
+
+.anim img {
+    width: 100px;
+    animation-name: monanim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+/*************Images**************/
+.img-bullet {
+    overflow: hidden;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.img-bullet img {
+    width: 100%;
+    border-radius: 100px;
+    height: 20vh;
+}
+
+.img-block {
+    overflow: hidden;
+    margin: 20px auto;
+    height: 22vh;
+}
+
+.img-block img {
+    width: 100%;
+    /*height: 25vh;*/
+}
+
+.illustration {
+    overflow: hidden;
+    height: 40vh;
+    margin-top: 60px;
+}
+
+.illustration img{
+    margin-top: -50px;
+    /*height: 85vh;*/
+}
+
+/*************Grille**************/
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+[class^='col-'] { margin: 2em; }
+
+.col-1 { width: 8.33%; }
+.col-2 {  width: calc(16.66% - 2em); }
+.col-3 { width: calc(25% - 3em); }
+.col-4 { width: calc(33.33% - 4em); } /* width: 33.33%; */
+.col-5 { width: 41.66%; }
+.col-6 { width: calc(50% - 4em); } 
+.col-7 { width: 58.33%; }
+.col-8 { width: 66.66%; }
+.col-9 { width: 75%; }
+.col-10 { width: 83.33%; }
+.col-11 { width: 91.66% }
+.col-12 { width: 100%; }
+
+/*************Table**************/
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background-color: #A5926A;
+    color: #fff;
+}
+
+table, th, td {
+    border: 1px solid #A5926A;
+    border-collapse: collapse;
+}
+
+.items {
+    width: 60%;
+    margin: auto;
+}
+
+.items li {
+    margin-left: 10px;
+}
