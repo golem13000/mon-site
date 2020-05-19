@@ -13,7 +13,7 @@ foreach($cat_test["youtube"] as $youtube) {
 </figure>";
 }
 
-?>
+
 
 <h1 class="text-center">Mes intro</h1>
         
