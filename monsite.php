@@ -1,5 +1,5 @@
 <?php
-echo "welcome"
+echo "Au revoir"
 
 ?>
 

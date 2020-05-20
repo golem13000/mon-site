@@ -16,6 +16,8 @@ abstract class Dbconnect implements Crud {
     abstract function selectAll();
     abstract function insert();
     abstract function select();
+    abstract function update();
+    abstract function delete();
 
 }
 ?>
