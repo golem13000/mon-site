@@ -15,13 +15,17 @@ $route = isset($_REQUEST["route"])? $_REQUEST["route"] : "home";
 
 switch($route) {
     case "home" : $view = showHome();
-        break;
+    break;
+    case "membre" : $view = showMembre();
+    break;
+    case "calendar" : $view = showCalendar();
+    break;   
     case "insert_user" : insertUser();
-        break;
+    break;
     case "connect_user" : connectUser();
-        break;
+    break;
     case "deconnect" : deconnectUser();
-        break;
+    break;
     default : $view= showHome();
 }
 
@@ -31,6 +35,21 @@ function showHome() {
             }       
             $datas = [];
             return ["template" => "home.php", "datas" => $datas];
+}
+
+function showMembre() {
+    $user = new Utilisateur();
+
+    $datas = [];
+    return ["template" => "menbre.php", "datas" => $datas];
+}
+
+function showCalendar() {
+
+    $aujd = new DateTimeImmutable("now", new DateTimeZone("europe/paris"));
+    $annee_courante = $aujd->format("y");
+    $mois_courant = $aujd->format("m");
+    $month = new Month($mois_courant, $annee_courante);
 }
 
 function insertUser() {
@@ -83,7 +102,21 @@ function connectUser() {
 function deconnectUser() {
     unset($_SESSION['pseudo']);
     header('Location:index.php');
-        }
+    }
+
+function insertTache() {
+
+    $tache = new Tache();
+    $tache->setIdUtilisateur($_SESSION['user']['id']);
+    $tache->setDescription($_POST["description"]);
+    $tache->setDeadline(new DateTime($_POST["deadline"], new DateTimeZone("europe/paris")));
+
+    $tache->insert();
+
+    header("Location:index.php?route=membres");
+
+
+}
         
 ?>
 
