@@ -93,7 +93,7 @@ public function selectAll(){
         $result->execute();
         $datas= $result->fetchAll();
 
-        $tab=[];
+        $tab= json_decode(file_get_contents("datas/users.json"));
 
         foreach($datas as $data) {
             $current = new Utilisateurs();
