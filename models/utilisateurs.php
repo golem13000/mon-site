@@ -113,6 +113,14 @@ public function select(){
         return $this;
     }
 
+public fonction update() {
+
+    }   
+    
+public fonction delete() {
+
+    }    
+
     public function selectByPseudo(){
         $query2 = "SELECT * FROM users WHERE pseudo = '$this->pseudo';";
         $result2 = $this->pdo->prepare($query2);
