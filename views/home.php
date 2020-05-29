@@ -1,4 +1,7 @@
+<?php
 
+
+?>
 
  <h2>Inscrivez-vous</h2>
 

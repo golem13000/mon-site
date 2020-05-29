@@ -27,7 +27,7 @@ foreach($cat_test["Mes vidéos"] as $videos) {
 foreach($cat_test["Mes lives"] as $lives) {
     $html.= "<figure class=\"col-4\">
     <h2 class=\"text-center\">".$lives["titre"]."</h2>
-    <div class=\"img-block\"><a href=\"vidéos/Vidéos1.html\"><img src=\"img/".$lives["image"]."\" alt=\"Lien vers ".$lives["titre"]."\">
+    <div class=\"img-block\"><a href=\"lives/live1.html\"><img src=\"img/".$lives["image"]."\" alt=\"Lien vers ".$lives["titre"]."\">
     </a></div>
     <p>".$lives["description"]."</p>
 </figure>";
