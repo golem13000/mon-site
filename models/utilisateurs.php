@@ -105,25 +105,47 @@ public function selectAll(){
     }
     
 public function select(){
-    $query2 = "SELECT * FROM users WHERE id_user = $this->idUtilisateur;";
+    $query2 = "SELECT * FROM users WHERE id_user = :id;";
     $result2 = $this->pdo->prepare($query2);
+    $result2->bindValue(':id',$this->idUtilisateur,PDO::PARAM_INT);
     $result2->execute();
     $data2 = $result2->fetch();
+    $this->nom = $data2["nom"];
+    $this->prenom = $data2["prenom"];
+    $this->pseudo = $data2["pseudo"];
+    $this->password = $data2["password"];
+    $this->adresse = $data2["adresse_email"];
+    $this->role = $data2["role"];
         
         return $this;
     }
 
 public fonction update() {
 
+    $query ="UPDATE `users` SET `ID_USER`=:iduser, `NOM`=:nom,`PRENOM`=:prenom,`ADRESSE_EMAIL`=:adresse,`PSEUDO`=:pseudo WHERE ID_USER = :iduser";;
+            $result = $this->pdo->prepare($query);
+            $result->bindValue(':iduser',$this->idUtilisateur,PDO::PARAM_INT);
+            $result->bindValue(':nom',$this->nom,PDO::PARAM_STR);
+            $result->bindValue(':prenom',$this->prenom,PDO::PARAM_STR);
+            $result->bindValue(':adresse',$this->adresse,PDO::PARAM_STR);
+            $result->bindValue(':pseudo',$this->pseudo,PDO::PARAM_STR);
+            $result->execute();
+
     }   
     
 public fonction delete() {
+
+    $query ="DELETE FROM `users` WHERE ID_USER = :iduser";
+    $result = $this->pdo->prepare($query);
+    $result->bindValue(':iduser',$this->idUtilisateur,PDO::PARAM_INT);
+    $result->execute();
 
     }    
 
     public function selectByPseudo(){
         $query2 = "SELECT * FROM users WHERE pseudo = '$this->pseudo';";
         $result2 = $this->pdo->prepare($query2);
+        $result2->bindValue(':pseudo',$this->pseudo,PDO::PARAM_STR);
         $result2->execute();
         $data2 = $result2->fetch();
                 
