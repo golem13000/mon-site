@@ -78,7 +78,7 @@ function showCalendar() {
 }
 
 function insertUser() {
-    var_dump($_POST);
+    //var_dump($_POST);
     if(preg_match("#^[a-zA-Z0-9]*$#", $_POST['pseudo']) &&
 preg_match("#^[a-zA-Z0-9]*$#", $_POST['password'])){
     echo "Le pseudo et le mot de passe sont corrects";
